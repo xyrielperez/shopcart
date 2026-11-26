@@ -203,3 +203,13 @@
   background: linear-gradient(135deg, #10b981, #34d399);
   box-shadow: 0 4px 12px rgba(16,185,129,0.35);
 }
+
+@media (max-width: 480px) {
+  .card-img-wrap img { height: 170px; }
+  .card-body { padding: 14px 14px 16px; }
+  .card-body h3 { font-size: 13px; }
+  .price { font-size: 17px; }
+  .add-btn { min-width: 88px; font-size: 11px; padding: 8px 12px; }
+  .card-reviews { font-size: 10px; }
+  .card-overlay { display: none; }
+}

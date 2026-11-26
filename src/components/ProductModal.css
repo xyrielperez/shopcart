@@ -231,7 +231,22 @@
 }
 
 @media (max-width: 700px) {
-  .pmodal { grid-template-columns: 1fr; }
-  .pmodal-img-wrap img { min-height: 240px; }
-  .pmodal-info { padding: 24px 20px; }
+  .pmodal { grid-template-columns: 1fr; max-height: 95vh; }
+  .pmodal-img-wrap img { min-height: 220px; max-height: 260px; }
+  .pmodal-info { padding: 20px 18px; gap: 10px; }
+  .pmodal-info h2 { font-size: 20px; }
+  .pmodal-price { font-size: 24px; }
+  .pmodal-perks { gap: 10px; }
+}
+
+@media (max-width: 480px) {
+  .pmodal-overlay { padding: 0; align-items: flex-end; }
+  .pmodal { border-radius: 20px 20px 0 0; max-height: 92vh; }
+  .pmodal-img-wrap img { min-height: 180px; max-height: 200px; }
+  .pmodal-info { padding: 16px; }
+  .pmodal-info h2 { font-size: 18px; }
+  .pmodal-price { font-size: 22px; }
+  .pmodal-add { font-size: 14px; padding: 12px; }
+  .pmodal-wish { width: 44px; height: 44px; font-size: 18px; }
+  .pmodal-perks span { font-size: 11px; }
 }

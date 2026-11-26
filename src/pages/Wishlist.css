@@ -85,8 +85,29 @@
 
 .shop-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(124,58,237,0.45); }
 
+@media (max-width: 1024px) {
+  .wishlist { padding: 32px 32px; }
+  .wishlist-header h1 { font-size: 28px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+}
+
 @media (max-width: 768px) {
-  .wishlist { padding: 32px 20px; }
-  .wishlist-header h1 { font-size: 26px; }
-  .grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+  .wishlist { padding: 24px 20px; }
+  .wishlist-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .wishlist-header h1 { font-size: 24px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+  .wishlist-empty { padding: 80px 24px; }
+}
+
+@media (max-width: 480px) {
+  .wishlist { padding: 20px 16px; }
+  .wishlist-header h1 { font-size: 22px; }
+  .grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .wishlist-empty { padding: 60px 16px; }
+  .empty-icon { font-size: 60px; }
+  .wishlist-empty h2 { font-size: 22px; }
+}
+
+@media (max-width: 360px) {
+  .grid { grid-template-columns: 1fr; }
 }

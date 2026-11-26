@@ -193,4 +193,10 @@
 
 @media (max-width: 480px) {
   .drawer { width: 100%; }
+  .drawer-header { padding: 18px 20px; }
+  .drawer-items { padding: 16px 16px; }
+  .drawer-footer { padding: 16px 20px; }
+  .drawer-item img { width: 56px; height: 56px; }
+  .drawer-item-info p { font-size: 12px; }
+  .drawer-total strong { font-size: 18px; }
 }

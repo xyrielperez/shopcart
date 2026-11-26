@@ -157,3 +157,12 @@
   .nav-links.open { transform: translateY(0); }
   .nav-links a { width: 100%; justify-content: center; padding: 12px 16px; font-size: 15px; }
 }
+
+@media (max-width: 480px) {
+  .sale-banner { font-size: 11px; padding: 8px 12px; }
+  .sale-banner strong { display: inline; }
+  .navbar { height: 60px; }
+  .logo { font-size: 19px; }
+  .cart-btn { padding: 8px 14px; font-size: 13px; }
+  .nav-links { top: 100px; }
+}
