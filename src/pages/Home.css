@@ -76,11 +76,13 @@
 }
 
 .hero h1 {
+  font-family: 'Inter', sans-serif;
   font-size: 56px;
   font-weight: 800;
+  font-style: normal;
   line-height: 1.1;
   margin: 0 0 16px;
-  letter-spacing: -1.5px;
+  letter-spacing: -0.5px;
   animation: fadeDown 0.6s 0.1s ease both;
 }
 
@@ -164,31 +166,30 @@
 
 /* Stats */
 .stats-bar {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   background: #fff;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  flex-wrap: nowrap;
-  overflow-x: auto;
 }
 
 .stat {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 16px 20px;
+  padding: 14px 16px;
   border-right: 1px solid var(--border);
   white-space: nowrap;
+  min-width: 0;
 }
 
 .stat:last-child { border-right: none; }
 
 .stat-icon {
-  font-size: 20px;
+  font-size: 18px;
   flex-shrink: 0;
+  line-height: 1;
 }
 
 .stat-label {
@@ -196,6 +197,9 @@
   font-size: 13px;
   font-weight: 600;
   color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Categories */
@@ -368,8 +372,8 @@
   .section-header h2 { font-size: 28px; }
   .promo-banner { margin: 0 32px 56px; padding: 40px 36px; flex-direction: column; text-align: center; }
   .promo-banner::before { display: none; }
-  .stats-bar { flex-wrap: wrap; }
-  .stat { flex: 1 1 50%; border-bottom: 1px solid var(--border); min-width: 0; }
+  .stats-bar { grid-template-columns: repeat(4, 1fr); }
+  .stat { padding: 12px 10px; gap: 8px; }
   .grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
 }
 
@@ -383,8 +387,8 @@
   .categories-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
   .cat-card { max-height: none; }
   .featured { padding: 40px 20px; }
-  .stat { gap: 8px; padding: 14px 12px; }
-  .stat-icon { font-size: 18px; }
+  .stat { padding: 12px 8px; gap: 7px; }
+  .stat-icon { font-size: 16px; }
   .stat-label { font-size: 12px; }
 }
 
@@ -400,8 +404,11 @@
   .cat-icon { font-size: 24px; }
   .cat-name { font-size: 10px; }
   .grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .stat { flex: 1 1 50%; gap: 6px; padding: 12px 10px; }
-  .stat-icon { font-size: 16px; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .stat { padding: 11px 8px; gap: 6px; border-bottom: 1px solid var(--border); }
+  .stat:nth-child(2) { border-right: none; }
+  .stat:last-child { border-right: 1px solid var(--border); }
+  .stat-icon { font-size: 15px; }
   .stat-label { font-size: 11px; }
   .section-header h2 { font-size: 24px; }
   .promo-banner { margin: 0 16px 40px; padding: 28px 20px; border-radius: 20px; }
