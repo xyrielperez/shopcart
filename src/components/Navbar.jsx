@@ -71,7 +71,7 @@ export default function Navbar() {
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search products, bags, electronics..."
+              placeholder="Search essentials, bags, home..."
             />
           </form>
 
