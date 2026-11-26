@@ -55,12 +55,12 @@ export default function Home() {
         <div className="hero-scroll-hint">↓ Scroll to explore</div>
       </section>
 
-      {/* Stats */}
+      {/* Trust Stats */}
       <div className="stats-bar">
-        <div className="stat"><span className="stat-num">10K+</span><span className="stat-label">Happy Customers</span></div>
-        <div className="stat"><span className="stat-num">500+</span><span className="stat-label">Products</span></div>
-        <div className="stat"><span className="stat-num">Free</span><span className="stat-label">Shipping Always</span></div>
-        <div className="stat"><span className="stat-num">24/7</span><span className="stat-label">Support</span></div>
+        <div className="stat"><span className="stat-icon">⚡</span><span className="stat-label">Same-Day Dispatch</span></div>
+        <div className="stat"><span className="stat-icon">🛍️</span><span className="stat-label">500+ Curated Items</span></div>
+        <div className="stat"><span className="stat-icon">🚚</span><span className="stat-label">Free Nationwide Shipping</span></div>
+        <div className="stat"><span className="stat-icon">↩️</span><span className="stat-label">7-Day Easy Returns</span></div>
       </div>
 
       {/* Categories */}

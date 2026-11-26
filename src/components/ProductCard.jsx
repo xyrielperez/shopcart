@@ -42,6 +42,10 @@ export default function ProductCard({ product, onAdd, delay = 0 }) {
     ? Math.round((1 - product.price / product.originalPrice) * 100)
     : null
 
+  const stockLabel = product.badge === 'Sale'
+    ? 'Low Stock'
+    : 'In Stock · Ships Today'
+
   return (
     <>
       <div
@@ -70,6 +74,7 @@ export default function ProductCard({ product, onAdd, delay = 0 }) {
           <h3>{product.name}</h3>
           <Stars rating={product.rating} />
           <p className="card-reviews">{product.reviews.toLocaleString()} reviews</p>
+          <p className={`card-stock${product.badge === 'Sale' ? ' low' : ''}`}>{stockLabel}</p>
           <div className="card-footer">
             <div className="price-wrap">
               <span className="price">{fmt(product.price)}</span>

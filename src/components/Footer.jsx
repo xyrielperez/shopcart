@@ -26,10 +26,10 @@ export default function Footer() {
 
         <div className="footer-links">
           <h4>Support</h4>
-          <a href="#">Help Center</a>
-          <a href="#">Track Order</a>
-          <a href="#">Returns</a>
-          <a href="#">Contact Us</a>
+          <Link to="/help">Help Center</Link>
+          <Link to="/track">Track Order</Link>
+          <Link to="/returns">Returns</Link>
+          <Link to="/contact">Contact Us</Link>
         </div>
 
         <div className="footer-newsletter">
@@ -43,7 +43,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>© 2025 ShopCart. All rights reserved.</p>
+        <p>© 2026 ShopCart. All rights reserved.</p>
         <div className="footer-badges">
           <span>🔒 SSL Secured</span>
           <span>💳 Visa</span>

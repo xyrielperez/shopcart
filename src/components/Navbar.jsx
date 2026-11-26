@@ -1,8 +1,9 @@
 import { useState, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import { useWishlist } from '../context/WishlistContext'
 import CartDrawer from './CartDrawer'
+import Toast from './Toast'
 import './Navbar.css'
 
 export default function Navbar() {
@@ -10,20 +11,54 @@ export default function Navbar() {
   const { wishlist } = useWishlist()
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const wrapRef = useRef(null)
+  const [copied, setCopied] = useState(false)
+  const [query, setQuery] = useState('')
   const location = useLocation()
+  const navigate = useNavigate()
   const isActive = (path) => location.pathname === path
 
   const closeMenu = () => setMenuOpen(false)
 
+  const handleCopyCode = () => {
+    navigator.clipboard.writeText('SHOPCART10').then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    })
+  }
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+    if (query.trim()) {
+      navigate(`/shop?q=${encodeURIComponent(query.trim())}`)
+      setQuery('')
+      closeMenu()
+    }
+  }
+
   return (
     <>
-      <div className="navbar-wrap" ref={wrapRef}>
+      {copied && <Toast message="Code copied! Use SHOPCART10 at checkout 🎉" onClose={() => setCopied(false)} />}
+
+      <div className="navbar-wrap">
         <div className="sale-banner">
-          🎉 Free shipping on all orders &nbsp;·&nbsp; Use code <strong>SHOPCART10</strong> for 10% off
+          🎉 Free shipping on all orders &nbsp;·&nbsp; Use code{' '}
+          <button className="promo-code-btn" onClick={handleCopyCode} title="Click to copy">
+            SHOPCART10
+          </button>{' '}
+          for 10% off
         </div>
         <header className="navbar">
           <Link to="/" className="logo" onClick={closeMenu}>🛍️ ShopCart</Link>
+
+          <form className="nav-search" onSubmit={handleSearch}>
+            <span className="search-icon">🔍</span>
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search electronics, bags, accessories..."
+            />
+          </form>
 
           <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
             <Link to="/" className={isActive('/') ? 'active' : ''} onClick={closeMenu}>Home</Link>
@@ -31,9 +66,23 @@ export default function Navbar() {
             <Link to="/wishlist" className={isActive('/wishlist') ? 'active' : ''} onClick={closeMenu}>
               Wishlist {wishlist.length > 0 && <span className="nav-badge">{wishlist.length}</span>}
             </Link>
+
+            {/* Search bar inside mobile menu */}
+            <form className="nav-search-mobile" onSubmit={handleSearch}>
+              <span className="search-icon">🔍</span>
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search products..."
+              />
+            </form>
           </nav>
 
           <div className="nav-actions">
+            <Link to="/login" className="login-btn" onClick={closeMenu} title="Login / Profile">
+              👤
+            </Link>
             <button className="cart-btn" onClick={() => { setDrawerOpen(true); closeMenu() }}>
               🛒 <span className="cart-label">Cart</span>
               {count > 0 && <span className="badge">{count}</span>}
@@ -50,7 +99,6 @@ export default function Navbar() {
         </header>
       </div>
 
-      {/* Mobile menu overlay backdrop */}
       {menuOpen && <div className="menu-backdrop" onClick={closeMenu} />}
 
       <CartDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
