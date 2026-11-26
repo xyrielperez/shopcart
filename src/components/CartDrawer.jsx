@@ -24,7 +24,7 @@ export default function CartDrawer({ open, onClose }) {
                   <img src={item.image} alt={item.name} />
                   <div className="drawer-item-info">
                     <p>{item.name}</p>
-                    <span>${item.price.toFixed(2)}</span>
+                    <span>₱{item.price.toFixed(2)}</span>
                     <div className="drawer-qty">
                       <button onClick={() => updateQty(item.id, item.qty - 1)}>−</button>
                       <span>{item.qty}</span>
@@ -37,7 +37,7 @@ export default function CartDrawer({ open, onClose }) {
             </div>
             <div className="drawer-footer">
               <div className="drawer-total">
-                <span>Total</span><strong>${total.toFixed(2)}</strong>
+                <span>Total</span><strong>₱{total.toFixed(2)}</strong>
               </div>
               <Link to="/cart" className="view-cart-btn" onClick={onClose}>View Full Cart</Link>
             </div>

@@ -45,10 +45,10 @@ export default function ProductModal({ product, onClose }) {
           <p className="pmodal-reviews">{product.reviews.toLocaleString()} verified reviews</p>
           <p className="pmodal-desc">{product.description}</p>
           <div className="pmodal-price-row">
-            <span className="pmodal-price">${product.price.toFixed(2)}</span>
+            <span className="pmodal-price">₱{product.price.toFixed(2)}</span>
             {product.originalPrice && (
               <>
-                <span className="pmodal-original">${product.originalPrice.toFixed(2)}</span>
+                <span className="pmodal-original">₱{product.originalPrice.toFixed(2)}</span>
                 <span className="pmodal-discount">-{discount}%</span>
               </>
             )}

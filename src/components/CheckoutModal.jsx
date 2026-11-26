@@ -19,7 +19,7 @@ export default function CheckoutModal({ onClose }) {
           <div className="modal-success">
             <span className="success-icon">🎉</span>
             <h2>Order Confirmed!</h2>
-            <p>Thank you, <strong>{form.name}</strong>! Your order of <strong>${total.toFixed(2)}</strong> is on its way.</p>
+            <p>Thank you, <strong>{form.name}</strong>! Your order of <strong>₱{total.toFixed(2)}</strong> is on its way.</p>
             <p className="success-sub">Confirmation sent to <strong>{form.email}</strong></p>
             <button className="done-btn" onClick={onClose}>Done</button>
           </div>
@@ -34,11 +34,11 @@ export default function CheckoutModal({ onClose }) {
                 {cart.map((i) => (
                   <div key={i.id} className="modal-item">
                     <span>{i.name} × {i.qty}</span>
-                    <span>${(i.price * i.qty).toFixed(2)}</span>
+                    <span>₱{(i.price * i.qty).toFixed(2)}</span>
                   </div>
                 ))}
                 <div className="modal-total">
-                  <span>Total</span><strong>${total.toFixed(2)}</strong>
+                  <span>Total</span><strong>₱{total.toFixed(2)}</strong>
                 </div>
               </div>
               <form onSubmit={handleSubmit} className="checkout-form">

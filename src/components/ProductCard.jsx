@@ -70,8 +70,8 @@ export default function ProductCard({ product, onAdd, delay = 0 }) {
           <p className="card-reviews">{product.reviews.toLocaleString()} reviews</p>
           <div className="card-footer">
             <div className="price-wrap">
-              <span className="price">${product.price.toFixed(2)}</span>
-              {product.originalPrice && <span className="original-price">${product.originalPrice.toFixed(2)}</span>}
+              <span className="price">₱{product.price.toFixed(2)}</span>
+              {product.originalPrice && <span className="original-price">₱{product.originalPrice.toFixed(2)}</span>}
             </div>
             <button className={`add-btn ${added ? 'added' : ''}`} onClick={handleAdd}>
               {added ? '✓ Added' : 'Add to Cart'}
