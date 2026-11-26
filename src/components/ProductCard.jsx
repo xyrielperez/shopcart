@@ -5,6 +5,8 @@ import useInView from '../hooks/useInView'
 import ProductModal from './ProductModal'
 import './ProductCard.css'
 
+const fmt = (n) => '₱' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
 function Stars({ rating }) {
   return (
     <div className="card-stars">
@@ -70,8 +72,8 @@ export default function ProductCard({ product, onAdd, delay = 0 }) {
           <p className="card-reviews">{product.reviews.toLocaleString()} reviews</p>
           <div className="card-footer">
             <div className="price-wrap">
-              <span className="price">₱{product.price.toFixed(2)}</span>
-              {product.originalPrice && <span className="original-price">₱{product.originalPrice.toFixed(2)}</span>}
+              <span className="price">{fmt(product.price)}</span>
+              {product.originalPrice && <span className="original-price">{fmt(product.originalPrice)}</span>}
             </div>
             <button className={`add-btn ${added ? 'added' : ''}`} onClick={handleAdd}>
               {added ? '✓ Added' : 'Add to Cart'}

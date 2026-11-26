@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import './CartDrawer.css'
 
+const fmt = (n) => '₱' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
 export default function CartDrawer({ open, onClose }) {
   const { cart, total, removeFromCart, updateQty } = useCart()
 
@@ -24,7 +26,7 @@ export default function CartDrawer({ open, onClose }) {
                   <img src={item.image} alt={item.name} />
                   <div className="drawer-item-info">
                     <p>{item.name}</p>
-                    <span>₱{item.price.toFixed(2)}</span>
+                    <span>{fmt(item.price)}</span>
                     <div className="drawer-qty">
                       <button onClick={() => updateQty(item.id, item.qty - 1)}>−</button>
                       <span>{item.qty}</span>
@@ -37,7 +39,7 @@ export default function CartDrawer({ open, onClose }) {
             </div>
             <div className="drawer-footer">
               <div className="drawer-total">
-                <span>Total</span><strong>₱{total.toFixed(2)}</strong>
+                <span>Total</span><strong>{fmt(total)}</strong>
               </div>
               <Link to="/cart" className="view-cart-btn" onClick={onClose}>View Full Cart</Link>
             </div>

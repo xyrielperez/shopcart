@@ -4,6 +4,8 @@ import { useCart } from '../context/CartContext'
 import CheckoutModal from '../components/CheckoutModal'
 import './CartPage.css'
 
+const fmt = (n) => '₱' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
 export default function CartPage() {
   const { cart, removeFromCart, updateQty, total } = useCart()
   const [showModal, setShowModal] = useState(false)
@@ -29,14 +31,14 @@ export default function CartPage() {
               <div className="item-info">
                 <h3>{item.name}</h3>
                 <span className="item-cat">{item.category}</span>
-                <span className="item-price">₱{item.price.toFixed(2)} each</span>
+                <span className="item-price">{fmt(item.price)} each</span>
               </div>
               <div className="qty-controls">
                 <button onClick={() => updateQty(item.id, item.qty - 1)}>−</button>
                 <span>{item.qty}</span>
                 <button onClick={() => updateQty(item.id, item.qty + 1)}>+</button>
               </div>
-              <span className="item-total">₱{(item.price * item.qty).toFixed(2)}</span>
+              <span className="item-total">{fmt(item.price * item.qty)}</span>
               <button className="remove" onClick={() => removeFromCart(item.id)} title="Remove">✕</button>
             </div>
           ))}
@@ -44,9 +46,9 @@ export default function CartPage() {
 
         <div className="order-summary">
           <h2>Order Summary</h2>
-          <div className="summary-row"><span>Subtotal</span><span>₱{total.toFixed(2)}</span></div>
+          <div className="summary-row"><span>Subtotal</span><span>{fmt(total)}</span></div>
           <div className="summary-row"><span>Shipping</span><span className="free">Free ✓</span></div>
-          <div className="summary-row total"><span>Total</span><span>₱{total.toFixed(2)}</span></div>
+          <div className="summary-row total"><span>Total</span><span>{fmt(total)}</span></div>
           <button className="checkout-btn" onClick={() => setShowModal(true)}>Proceed to Checkout →</button>
           <Link to="/shop" className="continue-link">← Continue Shopping</Link>
         </div>

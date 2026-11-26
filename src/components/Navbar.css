@@ -1,3 +1,9 @@
+.navbar-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
 .sale-banner {
   background: linear-gradient(135deg, #7c3aed, #a855f7);
   color: #fff;
@@ -6,9 +12,16 @@
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.2px;
+  line-height: 1.4;
 }
 
-.sale-banner strong { font-weight: 800; background: #fcd34d; color: #1e1b4b; padding: 1px 6px; border-radius: 4px; }
+.sale-banner strong {
+  font-weight: 800;
+  background: #fcd34d;
+  color: #1e1b4b;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
 
 .navbar {
   display: flex;
@@ -16,13 +29,10 @@
   align-items: center;
   padding: 0 48px;
   height: 68px;
-  background: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(124,58,237,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
   box-shadow: 0 4px 24px rgba(124,58,237,0.07);
 }
 
@@ -52,7 +62,6 @@
   padding: 8px 16px;
   border-radius: 99px;
   transition: all 0.2s;
-  position: relative;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -70,7 +79,11 @@
   font-weight: 800;
 }
 
-.nav-actions { display: flex; align-items: center; gap: 10px; }
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
 .cart-btn {
   background: linear-gradient(135deg, #7c3aed, #a855f7);
@@ -87,6 +100,7 @@
   transition: all 0.25s;
   box-shadow: 0 4px 14px rgba(124,58,237,0.32);
   font-family: 'Inter', sans-serif;
+  white-space: nowrap;
 }
 
 .cart-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(124,58,237,0.42); }
@@ -111,9 +125,10 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 6px;
+  padding: 8px;
   border-radius: 8px;
   transition: background 0.2s;
+  flex-shrink: 0;
 }
 
 .hamburger:hover { background: var(--primary-light); }
@@ -132,37 +147,66 @@
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 98;
+  backdrop-filter: blur(2px);
+}
+
+/* Tablet */
 @media (max-width: 768px) {
-  .navbar { padding: 0 20px; }
+  .navbar { padding: 0 20px; height: 60px; }
   .cart-label { display: none; }
   .hamburger { display: flex; }
 
   .nav-links {
     position: fixed;
-    top: 108px;
+    /* sits right below the sticky navbar-wrap — 100% of its own height */
+    top: 0;
     left: 0;
     right: 0;
-    background: rgba(255,255,255,0.97);
-    backdrop-filter: blur(20px);
+    background: #fff;
     flex-direction: column;
-    padding: 16px 20px 24px;
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    transform: translateY(-110%);
+    padding: 100px 20px 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    transform: translateY(-100%);
     transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
     z-index: 99;
     gap: 4px;
+    min-height: 100dvh;
+    justify-content: flex-start;
+    align-items: stretch;
   }
 
   .nav-links.open { transform: translateY(0); }
-  .nav-links a { width: 100%; justify-content: center; padding: 12px 16px; font-size: 15px; }
+
+  .nav-links a {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 16px;
+    font-size: 16px;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .nav-links a.active {
+    background: var(--primary-light);
+    color: var(--primary);
+  }
 }
 
+/* Mobile */
 @media (max-width: 480px) {
-  .sale-banner { font-size: 11px; padding: 8px 12px; }
-  .sale-banner strong { display: inline; }
-  .navbar { height: 60px; }
-  .logo { font-size: 19px; }
-  .cart-btn { padding: 8px 14px; font-size: 13px; }
-  .nav-links { top: 100px; }
+  .sale-banner { font-size: 11px; padding: 7px 12px; }
+  .navbar { height: 56px; padding: 0 16px; }
+  .logo { font-size: 18px; }
+  .cart-btn { padding: 8px 14px; font-size: 13px; gap: 5px; }
+  .nav-links { padding: 90px 16px 24px; }
+}
+
+@media (max-width: 360px) {
+  .logo { font-size: 16px; }
+  .cart-btn { padding: 7px 12px; font-size: 12px; }
 }

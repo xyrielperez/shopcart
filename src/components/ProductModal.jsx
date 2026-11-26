@@ -3,6 +3,8 @@ import { useCart } from '../context/CartContext'
 import { useWishlist } from '../context/WishlistContext'
 import './ProductModal.css'
 
+const fmt = (n) => '₱' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
 function Stars({ rating }) {
   return (
     <div className="stars">
@@ -45,10 +47,10 @@ export default function ProductModal({ product, onClose }) {
           <p className="pmodal-reviews">{product.reviews.toLocaleString()} verified reviews</p>
           <p className="pmodal-desc">{product.description}</p>
           <div className="pmodal-price-row">
-            <span className="pmodal-price">₱{product.price.toFixed(2)}</span>
+            <span className="pmodal-price">{fmt(product.price)}</span>
             {product.originalPrice && (
               <>
-                <span className="pmodal-original">₱{product.originalPrice.toFixed(2)}</span>
+                <span className="pmodal-original">{fmt(product.originalPrice)}</span>
                 <span className="pmodal-discount">-{discount}%</span>
               </>
             )}
