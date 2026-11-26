@@ -109,8 +109,10 @@
   font-size: 13px;
   font-family: 'Inter', sans-serif;
   color: var(--text);
-  padding: 10px 0;
+  padding: 10px 8px 10px 0;
   width: 100%;
+  min-width: 0;
+  text-overflow: ellipsis;
 }
 
 .nav-search input::placeholder { color: #9ca3af; }
