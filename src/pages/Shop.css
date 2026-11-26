@@ -14,18 +14,38 @@
 }
 
 .shop-header h1 { font-size: 28px; color: #111; margin: 0; }
+.count { font-size: 18px; color: #888; font-weight: 400; }
+
+.shop-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
 
 .search {
   padding: 10px 16px;
   border: 2px solid #e0e0e0;
   border-radius: 30px;
   font-size: 14px;
-  width: 260px;
+  width: 220px;
   outline: none;
   transition: border-color 0.2s;
 }
 
 .search:focus { border-color: #6c3fc5; }
+
+.sort-select {
+  padding: 10px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 30px;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.sort-select:focus { border-color: #6c3fc5; }
 
 .filters {
   display: flex;
