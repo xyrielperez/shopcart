@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Shop from './pages/Shop'
 import CartPage from './pages/CartPage'
+import './App.css'
 
 function App() {
   return (

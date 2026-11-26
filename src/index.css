@@ -30,6 +30,10 @@ body {
 
 h1, h2, h3 { font-family: 'Syne', sans-serif; }
 
+input, button, select, textarea {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #c4b5fd; border-radius: 99px; }

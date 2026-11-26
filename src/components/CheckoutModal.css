@@ -184,3 +184,10 @@
   transform: translateY(-2px);
   box-shadow: 0 12px 32px rgba(124,58,237,0.45);
 }
+
+@media (max-width: 640px) {
+  .modal { border-radius: 16px; }
+  .modal-header { padding: 22px 20px; border-radius: 16px 16px 0 0; }
+  .modal-body { padding: 20px; }
+  .modal-success { padding: 32px 20px; }
+}
