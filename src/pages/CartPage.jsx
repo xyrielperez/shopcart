@@ -10,7 +10,7 @@ export default function CartPage() {
 
   if (cart.length === 0) return (
     <main className="cart-empty">
-      <div className="empty-icon">🛒</div>
+      <span className="empty-icon">🛒</span>
       <h2>Your cart is empty</h2>
       <p>Looks like you haven't added anything yet.</p>
       <Link to="/shop" className="continue-btn">Start Shopping</Link>
@@ -20,7 +20,7 @@ export default function CartPage() {
   return (
     <main className="cart">
       {showModal && <CheckoutModal onClose={() => setShowModal(false)} />}
-      <h1>Your Cart <span className="cart-count">({cart.length} {cart.length === 1 ? 'item' : 'items'})</span></h1>
+      <h1 className="cart-title">Your Cart <span className="cart-count">{cart.length} {cart.length === 1 ? 'item' : 'items'}</span></h1>
       <div className="cart-layout">
         <div className="cart-items">
           {cart.map((item) => (
@@ -29,7 +29,7 @@ export default function CartPage() {
               <div className="item-info">
                 <h3>{item.name}</h3>
                 <span className="item-cat">{item.category}</span>
-                <span className="item-price">${item.price.toFixed(2)}</span>
+                <span className="item-price">${item.price.toFixed(2)} each</span>
               </div>
               <div className="qty-controls">
                 <button onClick={() => updateQty(item.id, item.qty - 1)}>−</button>
@@ -45,9 +45,9 @@ export default function CartPage() {
         <div className="order-summary">
           <h2>Order Summary</h2>
           <div className="summary-row"><span>Subtotal</span><span>${total.toFixed(2)}</span></div>
-          <div className="summary-row"><span>Shipping</span><span className="free">Free</span></div>
+          <div className="summary-row"><span>Shipping</span><span className="free">Free ✓</span></div>
           <div className="summary-row total"><span>Total</span><span>${total.toFixed(2)}</span></div>
-          <button className="checkout-btn" onClick={() => setShowModal(true)}>Proceed to Checkout</button>
+          <button className="checkout-btn" onClick={() => setShowModal(true)}>Proceed to Checkout →</button>
           <Link to="/shop" className="continue-link">← Continue Shopping</Link>
         </div>
       </div>

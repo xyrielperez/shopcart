@@ -1,59 +1,257 @@
 .hero {
-  background: linear-gradient(135deg, #6c3fc5, #a78bfa);
+  position: relative;
+  background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #7c3aed 100%);
   color: #fff;
-  padding: 80px 40px;
+  padding: 100px 48px;
   text-align: center;
+  overflow: hidden;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(245,158,11,0.2) 0%, transparent 70%);
+  top: -200px;
+  right: -100px;
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(168,85,247,0.3) 0%, transparent 70%);
+  bottom: -150px;
+  left: -50px;
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-30px) scale(1.05); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(245,158,11,0.2);
+  border: 1px solid rgba(245,158,11,0.4);
+  color: #fcd34d;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 99px;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
 }
 
 .hero h1 {
-  font-size: 48px;
-  margin: 0 0 16px;
+  font-size: 60px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 20px;
+  letter-spacing: -1.5px;
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, #fcd34d, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero p {
   font-size: 18px;
-  margin: 0 0 32px;
-  opacity: 0.9;
+  margin: 0 0 40px;
+  opacity: 0.8;
+  line-height: 1.6;
 }
+
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
 .hero-btn {
-  background: #fff;
-  color: #6c3fc5;
-  padding: 14px 32px;
-  border-radius: 30px;
+  background: linear-gradient(135deg, #f59e0b, #fcd34d);
+  color: #1e1b4b;
+  padding: 16px 36px;
+  border-radius: 99px;
   text-decoration: none;
-  font-weight: 700;
-  font-size: 16px;
-  transition: transform 0.2s;
+  font-weight: 800;
+  font-size: 15px;
+  transition: all 0.25s;
+  box-shadow: 0 8px 24px rgba(245,158,11,0.4);
 }
 
-.hero-btn:hover { transform: scale(1.05); }
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(245,158,11,0.5);
+}
+
+.hero-btn-outline {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  padding: 16px 36px;
+  border-radius: 99px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  border: 2px solid rgba(255,255,255,0.3);
+  transition: all 0.25s;
+  backdrop-filter: blur(8px);
+}
+
+.hero-btn-outline:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-3px);
+}
+
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+.stat {
+  flex: 1;
+  max-width: 220px;
+  text-align: center;
+  padding: 24px 16px;
+  border-right: 1px solid var(--border);
+}
+
+.stat:last-child { border-right: none; }
+
+.stat-num {
+  display: block;
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label { font-size: 13px; color: var(--text-muted); font-weight: 500; margin-top: 4px; }
 
 .featured {
-  padding: 60px 40px;
-  max-width: 1200px;
+  padding: 72px 48px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
-.featured h2 {
-  font-size: 28px;
-  margin-bottom: 32px;
-  color: #111;
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+
+.section-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.section-header h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 10px 20px;
+  border: 2px solid var(--primary-light);
+  border-radius: 99px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.view-all:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  transform: translateX(4px);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 28px;
 }
 
-.view-all {
-  display: inline-block;
-  margin-top: 32px;
-  color: #6c3fc5;
-  font-weight: 600;
+.promo-banner {
+  margin: 0 48px 72px;
+  max-width: calc(1280px - 96px);
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(135deg, #1e1b4b, #4c1d95);
+  border-radius: 24px;
+  padding: 48px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.promo-banner::after {
+  content: '🛍️';
+  position: absolute;
+  right: 48px;
+  font-size: 120px;
+  opacity: 0.15;
+}
+
+.promo-banner h2 {
+  font-size: 32px;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.promo-banner p { color: rgba(255,255,255,0.7); font-size: 16px; }
+
+.promo-btn {
+  background: linear-gradient(135deg, #f59e0b, #fcd34d);
+  color: #1e1b4b;
+  padding: 14px 32px;
+  border-radius: 99px;
   text-decoration: none;
-  font-size: 16px;
+  font-weight: 800;
+  font-size: 15px;
+  white-space: nowrap;
+  transition: all 0.25s;
+  box-shadow: 0 8px 24px rgba(245,158,11,0.3);
+  position: relative;
+  z-index: 1;
 }
 
-.view-all:hover { text-decoration: underline; }
+.promo-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(245,158,11,0.4); }

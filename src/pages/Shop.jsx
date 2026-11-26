@@ -28,16 +28,20 @@ export default function Shop() {
     <main className="shop">
       {toast && <Toast message={`${toast} added to cart!`} onClose={() => setToast(null)} />}
 
-      <div className="shop-header">
-        <h1>All Products <span className="count">({filtered.length})</span></h1>
+      <div className="shop-hero">
+        <h1>All Products <span className="count">{filtered.length} items</span></h1>
+        <p>Find exactly what you're looking for — search, filter, and sort with ease.</p>
         <div className="shop-controls">
-          <input
-            type="text"
-            placeholder="Search products..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="search"
-          />
+          <div className="search-wrap">
+            <span className="search-icon">🔍</span>
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="search"
+            />
+          </div>
           <select className="sort-select" value={sort} onChange={(e) => setSort(e.target.value)}>
             <option value="default">Sort: Default</option>
             <option value="low">Price: Low to High</option>
@@ -61,7 +65,7 @@ export default function Shop() {
       <div className="grid">
         {filtered.length > 0
           ? filtered.map((p) => <ProductCard key={p.id} product={p} onAdd={setToast} />)
-          : <p className="empty">No products found.</p>}
+          : <p className="empty">😕 No products found. Try a different search.</p>}
       </div>
     </main>
   )
