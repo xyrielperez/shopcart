@@ -1,5 +1,43 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Footer.css'
+
+function Newsletter() {
+  const [email, setEmail] = useState('')
+  const [error, setError] = useState('')
+  const [done, setDone] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (!email.trim()) { setError('Please enter your email.'); return }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError('Please enter a valid email address.'); return }
+    setError('')
+    setDone(true)
+  }
+
+  if (done) {
+    return (
+      <div className="newsletter-success">
+        <span className="newsletter-check">✓</span>
+        <p>You're in! Watch your inbox for exclusive deals.</p>
+      </div>
+    )
+  }
+
+  return (
+    <form className="newsletter-form" onSubmit={handleSubmit} noValidate>
+      <input
+        type="email"
+        placeholder="Enter your email"
+        value={email}
+        onChange={(e) => { setEmail(e.target.value); setError('') }}
+        aria-label="Email address"
+      />
+      <button type="submit">Subscribe</button>
+      {error && <span className="newsletter-error">{error}</span>}
+    </form>
+  )
+}
 
 export default function Footer() {
   return (
@@ -7,7 +45,7 @@ export default function Footer() {
       <div className="footer-top">
         <div className="footer-brand">
           <span className="footer-logo">🛍️ ShopCart</span>
-          <p>Your one-stop destination for curated products at unbeatable prices. Shop smarter, live better.</p>
+          <p>Handpicked essentials for work, home, wellness, and travel — delivered with care.</p>
           <div className="social-links">
             <a href="#" aria-label="Instagram">📸</a>
             <a href="#" aria-label="Twitter">🐦</a>
@@ -35,10 +73,7 @@ export default function Footer() {
         <div className="footer-newsletter">
           <h4>Stay in the loop</h4>
           <p>Get exclusive deals and new arrivals straight to your inbox.</p>
-          <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
-            <input type="email" placeholder="Enter your email" required />
-            <button type="submit">Subscribe</button>
-          </form>
+          <Newsletter />
         </div>
       </div>
 

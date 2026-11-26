@@ -32,7 +32,7 @@ const products = [
   {
     id: 6, name: 'Yoga Mat', category: 'Sports', price: 1699, originalPrice: 2499,
     description: 'Non-slip surface for all yoga styles. Eco-friendly natural rubber.',
-    image: 'https://images.unsplash.com/photo-1601925228008-f5e4c5e5b8e4?w=500&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&h=500&fit=crop',
     rating: 4.5, reviews: 1123, badge: 'Sale'
   },
   {
