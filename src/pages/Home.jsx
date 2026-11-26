@@ -45,8 +45,8 @@ export default function Home() {
       <section className="hero">
         <div className="hero-content">
           <span className="hero-badge">✨ New Arrivals Every Week</span>
-          <h1>Shop Smarter,<br /><span>Live Better</span></h1>
-          <p>Discover curated products across electronics, fashion, home & more — all at unbeatable prices.</p>
+          <h1>Curated Everyday Gear,<br /><span>Delivered Fast</span></h1>
+          <p>Electronics, fashion, home essentials & more — handpicked for quality, shipped same day.</p>
           <div className="hero-actions">
             <Link to="/shop" className="hero-btn">Shop Now →</Link>
             <Link to="/wishlist" className="hero-btn-outline">My Wishlist 🤍</Link>

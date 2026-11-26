@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import { useWishlist } from '../context/WishlistContext'
 import CartDrawer from './CartDrawer'
-import Toast from './Toast'
 import './Navbar.css'
 
 export default function Navbar() {
@@ -37,28 +36,17 @@ export default function Navbar() {
 
   return (
     <>
-      {copied && <Toast message="Code copied! Use SHOPCART10 at checkout 🎉" onClose={() => setCopied(false)} />}
-
       <div className="navbar-wrap">
         <div className="sale-banner">
           🎉 Free shipping on all orders &nbsp;·&nbsp; Use code{' '}
-          <button className="promo-code-btn" onClick={handleCopyCode} title="Click to copy">
+          <button className={`promo-code-btn ${copied ? 'copied' : ''}`} onClick={handleCopyCode} title="Click to copy">
             SHOPCART10
+            {copied && <span className="promo-copied-tip">Copied!</span>}
           </button>{' '}
           for 10% off
         </div>
         <header className="navbar">
           <Link to="/" className="logo" onClick={closeMenu}>🛍️ ShopCart</Link>
-
-          <form className="nav-search" onSubmit={handleSearch}>
-            <span className="search-icon">🔍</span>
-            <input
-              type="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search electronics, bags, accessories..."
-            />
-          </form>
 
           <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
             <Link to="/" className={isActive('/') ? 'active' : ''} onClick={closeMenu}>Home</Link>
@@ -67,9 +55,8 @@ export default function Navbar() {
               Wishlist {wishlist.length > 0 && <span className="nav-badge">{wishlist.length}</span>}
             </Link>
 
-            {/* Search bar inside mobile menu */}
+            {/* Search bar inside mobile menu only */}
             <form className="nav-search-mobile" onSubmit={handleSearch}>
-              <span className="search-icon">🔍</span>
               <input
                 type="search"
                 value={query}
@@ -78,6 +65,15 @@ export default function Navbar() {
               />
             </form>
           </nav>
+
+          <form className="nav-search" onSubmit={handleSearch}>
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search electronics, bags, accessories..."
+            />
+          </form>
 
           <div className="nav-actions">
             <Link to="/login" className="login-btn" onClick={closeMenu} title="Login / Profile">
