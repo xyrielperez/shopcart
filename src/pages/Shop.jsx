@@ -1,5 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
+import SkeletonCard from '../components/SkeletonCard'
 import Toast from '../components/Toast'
 import products from '../data/products'
 import './Shop.css'
@@ -7,10 +9,19 @@ import './Shop.css'
 const categories = ['All', ...new Set(products.map((p) => p.category))]
 
 export default function Shop() {
-  const [active, setActive] = useState('All')
+  const location = useLocation()
+  const params = new URLSearchParams(location.search)
+  const [active, setActive] = useState(params.get('cat') || 'All')
   const [search, setSearch] = useState('')
   const [sort, setSort] = useState('default')
   const [toast, setToast] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setLoading(true)
+    const t = setTimeout(() => setLoading(false), 700)
+    return () => clearTimeout(t)
+  }, [active, search, sort])
 
   const filtered = products
     .filter((p) => {
@@ -63,9 +74,12 @@ export default function Shop() {
       </div>
 
       <div className="grid">
-        {filtered.length > 0
-          ? filtered.map((p) => <ProductCard key={p.id} product={p} onAdd={setToast} />)
-          : <p className="empty">😕 No products found. Try a different search.</p>}
+        {loading
+          ? Array(8).fill(0).map((_, i) => <SkeletonCard key={i} />)
+          : filtered.length > 0
+            ? filtered.map((p, i) => <ProductCard key={p.id} product={p} onAdd={setToast} delay={i * 50} />)
+            : <p className="empty">😕 No products found. Try a different search.</p>
+        }
       </div>
     </main>
   )

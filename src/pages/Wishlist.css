@@ -1,0 +1,92 @@
+.wishlist {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px;
+}
+
+.wishlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.wishlist-header h1 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+
+.wl-count {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: var(--text-muted);
+  font-weight: 500;
+  background: var(--primary-light);
+  padding: 3px 12px;
+  border-radius: 99px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.section-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.continue-shopping {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 10px 20px;
+  border: 2px solid var(--primary-light);
+  border-radius: 99px;
+  transition: all 0.2s;
+}
+
+.continue-shopping:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+.wishlist-empty {
+  text-align: center;
+  padding: 120px 40px;
+}
+
+.empty-icon { font-size: 80px; display: block; margin-bottom: 20px; }
+.wishlist-empty h2 { font-size: 28px; color: var(--text); margin-bottom: 10px; }
+.wishlist-empty p { color: var(--text-muted); margin-bottom: 32px; font-size: 16px; }
+
+.shop-btn {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: #fff;
+  padding: 14px 36px;
+  border-radius: 99px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: 0 8px 24px rgba(124,58,237,0.35);
+  display: inline-block;
+  transition: all 0.25s;
+}
+
+.shop-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(124,58,237,0.45); }
+
+@media (max-width: 768px) {
+  .wishlist { padding: 32px 20px; }
+  .wishlist-header h1 { font-size: 26px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+}
